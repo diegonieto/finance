@@ -3,7 +3,7 @@ from datetime import datetime
 
 class Database:
     _reader = None
-    _db = None
+    _ddbb = None
     _inputDateFormat = '%d/%m/%Y'
     _outputDateFormat = '%Y-%m-%d'
     _costsSchema =  '''
