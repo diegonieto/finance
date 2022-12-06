@@ -1,17 +1,17 @@
 from ddbb import Database
-import logging
 
 
 class DatabaseReader(Database):
     _accountData = '''
-        date(datetook),
+        CAST(strftime('%s', datetook) AS INT),
         description,
         price,
         balance
     '''
-    def getAllAccountData(self):
+    def getAllAccountData(self, fromDate=''):
         return self._ddbb.getData(
             'account', 
             self._accountData, 
-            'order by datetook'
+            'where datetook > ' + self.toJulianday(fromDate),
+            'order by datetook',
             )

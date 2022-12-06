@@ -41,3 +41,9 @@ class Database:
 
     def parseDate(self, value):
         return self.toJulianday(datetime.strptime(value, self._inputDateFormat).strftime(self._outputDateFormat))
+
+    def toEpoch(self, value):
+        return datetime.strptime(value, self._outputDateFormat).strftime('%s')
+
+    def toDateformat(self, value):
+        return datetime.fromtimestamp(int(value)).strftime(self._outputDateFormat)
