@@ -1,3 +1,6 @@
+from ddbbreader import DatabaseReader
+import logging
+
 # TODO
 class DataContainer:
     _isModelSet = False
@@ -19,3 +22,11 @@ class DataContainer:
 
     def setData(self, data):
         self._isDataSet = True
+
+
+if __name__ == "__main__":
+    dataReader = DatabaseReader()
+    accountData = dataReader.getAllAccountData()
+
+    for data in accountData:
+        print(data[1])

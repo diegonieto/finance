@@ -16,7 +16,7 @@ class SQLite3Wrapper:
             logging.warning('table already exists')
 
     def getData(self, table, fields='*', condition=''):
-        res = self._cursor.execute('SELECT ' + fields + ' FROM ' + table  + condition)
+        res = self._cursor.execute('SELECT ' + fields + ' FROM ' + table  + ' ' + condition)
         return res.fetchall()
 
     def insertData(self, table, values):
