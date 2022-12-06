@@ -3,33 +3,36 @@ import csv
 from tokenize import Ignore
 
 class CSVReader:
-    csvdata = None
+    _csvdata = None
+    _logger = None
 
     def __init__(self):
-        self.csvdata = []
-        pass
+        self._csvdata = []
+        self._logger = logging.getLogger(self.__class__.__name__)
+        self._logger.setLevel(logging.DEBUG)
+        super().__init__()
 
     def read(self, filepath):
         # opening the CSV file
         with open(filepath, mode='r', encoding='utf-8', errors=Ignore) as file:
             readobj = csv.reader(file)
             if readobj is None:
-                logging.warning("File empty")
+                self._logger.warning("File empty")
                 return
             try:
-                self.csvdata += [lines for lines in readobj]
-                logging.debug('Number of elements read: ' + str(len(self.csvdata)))
+                self._csvdata += [lines for lines in readobj]
+                self._logger.debug('Number of elements read: ' + str(len(self._csvdata)))
             except Exception as Argument:
                 for lines in readobj:
-                    logging.error('Error in: ' + str(lines))
-                logging.error('Exception ' + Argument + ' in file: '+ filepath)
+                    self._logger.error('Error in: ' + str(lines))
+                self._logger.error('Exception ' + Argument + ' in file: '+ filepath)
 
 
     def printData(self):
-        for lines in self.csvdata:
+        for lines in self._csvdata:
             print(lines)
 
     def getData(self):
-        if self.csvdata is []:
+        if self._csvdata is []:
             raise Exception('Sorry, data not read yet')
-        return self.csvdata
+        return self._csvdata
