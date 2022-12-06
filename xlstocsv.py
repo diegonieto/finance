@@ -5,8 +5,9 @@ import os
 if sys.argv is None:
     print('Excel file not provided')
 
-if len(sys.argv) != 2:
-    print('Invalid number of parameters')
+destPath = None
+if len(sys.argv) == 3:
+    destPath = sys.argv[2]
 
 file = sys.argv[1]
 
@@ -15,7 +16,10 @@ readObject = pd.read_excel (file)
 
 basename = os.path.basename(file)
 basenameWithoutExtension = os.path.splitext(basename)[0]
-newFilename = os.path.join(os.path.dirname(file), basenameWithoutExtension)
+if destPath is None:
+    newFilename = os.path.join(os.path.dirname(file), basenameWithoutExtension)
+else:
+    newFilename = os.path.join(destPath, basenameWithoutExtension)
 newFilename += '.csv'
 
 print('File ' + newFilename + ' ready to write')

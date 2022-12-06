@@ -198,7 +198,7 @@ if __name__ == "__main__":
 
     # Force=True because it can be already defined: 
     # https://stackoverflow.com/questions/20240464/python-logging-file-is-not-working-when-using-logging-basicconfig
-    logging.basicConfig(filename='csvloader.log', filemode='w',  force=True, level=logging.DEBUG)
+    logging.basicConfig(filename='csvloader.log', filemode='w',  force=True, level=logging.ERROR)
 
     opts, args = getopt.getopt(sys.argv[1:], "hca:", ["accountpath=","costspath="])
     costspath = ''
