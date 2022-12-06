@@ -1,25 +1,25 @@
-from ddbbfeeder import DatabaseFeeder
 import logging
+from ddbbfeeder import DatabaseFeeder
 import getopt
 import sys
 
 if __name__ == "__main__":
-    dataFeeder = DatabaseFeeder()
-
     # Force=True because it can be already defined: 
     # https://stackoverflow.com/questions/20240464/python-logging-file-is-not-working-when-using-logging-basicconfig
-    logging.basicConfig(filename='csvloader.log', filemode='w',  force=True, level=logging.ERROR)
+    logging.basicConfig(filename='csvloader.log', filemode='w',  force=True, level=logging.DEBUG)
 
-    opts, args = getopt.getopt(sys.argv[1:], "hca:", ["accountpath=","costspath="])
+    dataFeeder = DatabaseFeeder()
+
+    opts, args = getopt.getopt(sys.argv[1:], "h:c:a:", ["accountpath=","costspath="])
     costspath = ''
     accountpath = ''
     for opt, arg in opts:
         if opt == '-h':
             print(__file__ + '-c <costs path> -a <account path>')
             exit()
-        elif opt in ("-c", "--costsdata"):
+        elif opt in ("-c", "--costspath"):
             costspath = arg
-        elif opt in ("-a", "--accountdata"):
+        elif opt in ("-a", "--accountpath"):
             accountpath = arg
 
     # TODO remove files with git filterbranch
