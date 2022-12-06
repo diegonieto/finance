@@ -1,0 +1,4 @@
+.headers on
+.mode column
+.once account-data.txt
+select date(datetook), description, price, balance from account order by datetook;
