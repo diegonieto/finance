@@ -57,8 +57,9 @@ class DatabaseFeeder(Database):
             raise Exception
 
     def _importFilesInPath(self, path, feedFunction):
-        self._logger.debug('Checking directory ' + path)
         dataFiles = os.listdir(path)
+        self._logger.debug('Checking directory ' + path + ' with ' + str(len(dataFiles)) + ' detected')
+        
         for file in dataFiles:
             if file.endswith('.csv'):
                 filepath = os.path.join(path, file)

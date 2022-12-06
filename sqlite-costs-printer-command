@@ -1,0 +1,4 @@
+.headers on
+.mode column
+.once costs-data.txt
+select date(date), description, price from costs order by date;
