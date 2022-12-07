@@ -27,12 +27,6 @@ if __name__ == "__main__":
         elif opt in ("-a", "--accountpath"):
             accountpath = arg
 
-    # TODO remove files with git filterbranch
-    if (not ''):
-        inputfile = '/tmp/test'
-
-    # dataFeeder.feedMovementsWithFileDb('/tmp/test')
-
     if accountpath:
         dataFeeder.importDataFromDirectory(accountpath, 'account')
     if costspath:
