@@ -18,8 +18,8 @@ class SQLite3Wrapper:
         except:
             self._logger.warning('table already exists')
 
-    def getData(self, table, fields='*', condition=''):
-        res = self._cursor.execute('SELECT ' + fields + ' FROM ' + table  + ' ' + condition)
+    def getData(self, table, fields='*', condition='', order=''):
+        res = self._cursor.execute('SELECT ' + fields + ' FROM ' + table  + ' ' + condition + ' ' + order)
         return res.fetchall()
 
     def insertData(self, table, values):

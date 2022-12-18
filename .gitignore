@@ -1,0 +1,6 @@
+*.txt
+*.log
+*.db
+.vscode
+__pycache__/
+output/*
