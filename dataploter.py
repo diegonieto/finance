@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import os
 
 class DataPloter():
     _fig = None
@@ -25,6 +26,8 @@ class DataPloter():
 
 
     def plotForecast(self, x, y):
+        if not os.path.exists('output'):
+            os.mkdir('output')
         self._ax1.plot(x, y, color='red')
         self._fig.savefig('output/account.png')
         plt.show()

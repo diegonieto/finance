@@ -28,7 +28,6 @@ if __name__ == "__main__":
     # Read DDBB data
     dataReader = DatabaseReader()
     accountData = dataReader.getAllAccountData(fromDate=fromDate)
-    print(accountData)
 
     # Choose ranges
     accountDataArray = numpy.array(accountData)
