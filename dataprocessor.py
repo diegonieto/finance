@@ -64,6 +64,10 @@ def processCosts(dataReader, clusters, settings):
     costsData = dataReader.getAllCostsData(fromDate=fromDate, toDate=toDate)
     costsDataArray = numpy.array(costsData)
 
+    if not costsDataArray.size:
+        logging.warning('Not enough data')
+        return
+
     x_train = costsDataArray[:,2]
 
     clusters = min(clusters, x_train.size)

@@ -15,11 +15,18 @@ apt get install sqlite3 python3
 pip install -r requirements.txt
 ```
 
+# Using the docker
+```
+git clone https://github.com/diegonieto/finance
+docker build - < Dockerfile -t finance
+docker run -v `pwd`:/tmp/finance --rm -it finance:latest /bin/bash
+```
+
 # Running the example
 ```
 ./process-xls.sh example /tmp/miau
 python3 datafeeder.py -a /tmp/miau
-python3 dataprocessor.py
+python3 dataprocessor.py -f "2022-01-01" -t "2022-06-01"
 ```
 <img title="Example forecast" alt="Example Forecast" src="img/example.png">
 
