@@ -1,9 +1,9 @@
 # Introduction
-Finance is tool that helps with the own knowledge of the finance status. It basically tries to discover your account management. To do that two tools are provided:
-* Datafeeder: To import the account balance and movements independently
-* Dataprocessor: That process the imported data and generates a forecast based on its historic
+Finance is a tool that helps with the own knowledge of the financial status. It basically tries to discover your account management. To do that two tools are provided:
+* Datafeeder: Imports the account balance and movements separately
+* Dataprocessor: That process the imported data and generates a forecast based on its past data
 
-The plots are saved in the img folder. Also, a Jenkinsfile is provided to automatize the data injection
+The generated plots (forecast and clustering) are saved in the `output` folder. Also, a Jenkinsfile is provided to automatize the data injection
 by scanning a folder automatically.
 
 The input data sopported is .xls or .csv files with the format shown in the example
