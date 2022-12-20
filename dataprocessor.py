@@ -1,7 +1,7 @@
 from ddbbreader import DatabaseReader
 from linearPredictor import LinearDataPredictor
 from clusterpredictor import ClusterDataPredictor
-from dataploter import DataPloter
+from dataplotter import DataPlotter
 
 import logging
 import numpy
@@ -51,9 +51,10 @@ def processAccount(dataReader, settings):
     prediction = dp.predict(numpy.array(x_pred_int), Normalized)
 
     # Plot data
-    dataPlotter = DataPloter()
+    dataPlotter = DataPlotter()
     dataPlotter.plotData(x_train_int, y_train_float)
     dataPlotter.plotForecast(x_pred_int, prediction)
+    dataPlotter.showAccount()
 
 
 def processCosts(dataReader, clusters, settings):
@@ -82,7 +83,7 @@ def processCosts(dataReader, clusters, settings):
     })
     dp.train()
 
-    dataPlotter = DataPloter(settings)
+    dataPlotter = DataPlotter(settings)
     dataPlotter.plotCluster(dp.getCenters())
 
 
@@ -98,7 +99,7 @@ if __name__ == "__main__":
     fromDate = '2022-06-01'
     toDate = '2023-06-01'
     nlastMonths = 6
-    clusters = 50
+    clusters = 10
 
     for opt, arg in opts:
         if opt == '-h':
@@ -133,7 +134,7 @@ if __name__ == "__main__":
         settings = {
             'fromDate' : str(oneMonthBeforeCurrent),
             'toDate' : str(current),
-            'plot' : False,
+            'plot' : True,
         }
         processCosts(dataReader, clusters, settings)
         current = oneMonthBeforeCurrent
